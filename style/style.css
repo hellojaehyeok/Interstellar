@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 /* Common */
-body{font-family: 'Noto Sans KR', sans-serif;}
+body{font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; background: #478af7;}
 section{background-repeat: no-repeat; background-position: center; background-size: cover;}
 
 
@@ -55,7 +55,7 @@ section.about > div > img.introduce_back_img{width: 600px; }
 
 
 /* Story Line */
-section.story_line{width: 100%; display: inline-block; background: #478af7; position: absolute;}
+section.story_line{width: 100%; display: inline-block; background: #478af7; position: relative;}
 section.story_line > div{ position: relative;  padding: 230px 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}
 section.story_line > div > ol{display: flex; align-items: center; justify-content: center; flex-direction: column;}
 section.story_line > div > ol > li{text-align: center; font-size: 50px; margin-bottom: 60px;  -webkit-text-stroke: 1px #fff; color: transparent; cursor: pointer; display: inline-block; transition: 500ms; z-index: 2;}
@@ -75,3 +75,13 @@ section.story_line > div > ol > li.fifth_story > img:nth-child(2){width: 30%; to
 section.story_line > div > ol > li.cooper_story > img:nth-child(1){width: 25%; top: 10vh; left: 10%;}
 section.story_line > div > ol > li.cooper_story > img:nth-child(2){width: 30%; top: 40vh; right: 5%;}
 
+/* Steel Cut */
+section.steel_cut{width: 100vw; height: 300vh;overflow: hidden; background: #fff; position: relative;}
+section.steel_cut > div{width: 100vw; height: 100vh;position: absolute; top: 0; left: 0;}
+section.steel_cut > div > div{transform-origin: 50% 50%; background-size: cover; background-repeat: no-repeat; position: absolute; background-position: center;}
+section.steel_cut > div > div.cut_main_img{width: 30vw; height: 15vw; transform: translate(-50%, -50%) scale(1);  top: 50%; left: 50%; background-image: url("../img/steelCut/main_cut.jpeg");}
+section.steel_cut > div > div.cut_top_img{width: 5vw; height: 5vw; transform: translate(-50%, -50%) scale(4);  top: 20%; left: 55%; background-image: url("../img/steelCut/top.jpg");}
+
+/* Change Txt */
+section.change_txt{width: 100%; height: 100vh; background: #478af7; display: flex; align-items: center; justify-content: center;}
+section.change_txt > p{color: #fff; font-size: 40px;}
