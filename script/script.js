@@ -1,9 +1,9 @@
 console.clear();
 
 
+// Scroll Count Up
 const count = document.querySelectorAll("h2.number_count");
 let is_Count = false;
-
 function counter(target, start, end, speed){
     if(is_Count){
         return 
@@ -38,6 +38,7 @@ function scroll_count(){
     }
 }
 
+// MouseMove Astronaut
 function move_astronaut(){
     document.addEventListener('mousemove', function(e){
         const astronaut = document.querySelector("img.astronaut");
@@ -53,6 +54,8 @@ function move_astronaut(){
     }
 }
 
+
+// Scroll Img Scale
 function scroll_img(){
     
     const steel_cut = document.querySelector("section.steel_cut");
@@ -84,15 +87,32 @@ function scroll_img(){
     }   
 }
 
-function init(){
-    window.onload = function(){
-        setTimeout(function(){
-            window.scrollTo(0, 0);
-        },100)   
+// Change Mode Txt
+function change_mode_txt(){
+    const steel_cut = document.querySelector("section.steel_cut");
+    const mode_txt = document.querySelector("span.mode_txt");
+
+    window.addEventListener("scroll", scroll_change_mode_txt);
+    function scroll_change_mode_txt(){
+        if(steel_cut.getBoundingClientRect().bottom < -50){
+            mode_txt.classList.add("active_3D_txt");
+        }else{
+            mode_txt.classList.remove("active_3D_txt");
+        }
     }
+}
+
+// Init
+function init(){
+    // window.onload = function(){
+    //     setTimeout(function(){
+    //         window.scrollTo(0, 0);
+    //     },100)   
+    // }
 
     scroll_count();
     move_astronaut();
     scroll_img();
+    change_mode_txt()
 }
 init();

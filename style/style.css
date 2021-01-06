@@ -32,12 +32,12 @@ section.count > div > ul > li > p{font-size: 20px;}
 /* Story */
 section.story{height: 650px; background-image: url('../img/bg/bg_2.png');}
 section.story > div{width: 1200px; margin: 0 auto; position: relative; text-align: right;}
-section.story > div > img{width: 390px; height: 530px; position: absolute;}
+section.story > div > img{width: 390px; height: 530px; position: absolute; left: 0; top: 0;}
 section.story > div > div{color: #fff; margin: 250px 0 190px; display: inline-block; text-align: left;}
 section.story > div > div > p{font-size: 20px; line-height: 30px;}
-section.story > div > div > a{color: #fff; font-size: 16px; text-decoration: none; display: inline-block;  width: 180px; height: 60px; border: 1px solid #3ff; border-radius: 20px; text-align: center; line-height: 60px; margin-top: 30px; overflow: hidden; position: relative; background: none;}
+section.story > div > div > a{color: #fff; font-size: 16px; text-decoration: none; display: inline-block;  width: 180px; height: 60px; border: 1px solid #3ff; border-radius: 20px; text-align: center; line-height: 60px; margin-top: 30px; transition: 500ms; overflow: hidden; position: relative; z-index: 1;}
 section.story > div > div > a::after{position: absolute; width: 0%; height: 100%; background: #3ff; content: ""; left: -35%; top: 0; transition: 400ms; transform: skew(50deg); z-index: -1;}
-section.story > div > div > a:hover{color: #fff;}
+section.story > div > div > a:hover{color: #000;}
 section.story > div > div > a:hover::after{height: 100%; width: 200%;}
 
 
@@ -89,5 +89,12 @@ section.steel_cut > div > div.cut_right_up_img{width: 20vw; height: 9vw; top: 23
 section.steel_cut > div > div.cut_right_down_img{width: 10vw; height: 7vw; top: 33.5vw; left: 70vw; background-image: url("../img/steelCut/right_2.jpg");}
 
 /* Change Txt */
-section.change_txt{width: 100%; height: 100vh; background: #000; display: flex; align-items: center; justify-content: center;}
-section.change_txt > p{color: #fff; font-size: 40px;}
+section.change_txt{width: 100%; height: 125vh; background: #000;text-align: center;}
+section.change_txt > p{color: #fff; font-size: 40px; position: sticky; top: 50vh; display: inline-block;padding-left: 70px;}
+section.change_txt > p > span{position: absolute; left: 0; color: #fff; transition: 500ms; transform: rotateX(0deg); transform-origin: 50% 0; transform-style: preserve-3d;}
+section.change_txt > p > span.active_3D_txt{transform: rotateX(90deg)}
+section.change_txt > p > span::after{
+    color: #3ff; content: attr(data-text); position: absolute; transform-origin: 50% 0; top: 100%; left: 0;width: 100%; height: 100%;
+    transform: rotateX(-90deg);
+}
+
