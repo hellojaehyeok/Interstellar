@@ -65,7 +65,8 @@ function scroll_img(){
     function img_trans(){
         let cur_scroll = document.documentElement.scrollTop;
         let gap_scroll = cur_scroll - steel_cut_start
-        if(cur_scroll < steel_cut_start){;
+        if(cur_scroll < steel_cut_start){
+            // cut_img_wrap.style.top = 0  + "px";
             cut_img_wrap.style.position = "absolute";
             cut_img_wrap.style.transform = "scale(5)";
 
