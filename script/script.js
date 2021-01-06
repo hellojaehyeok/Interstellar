@@ -102,6 +102,122 @@ function change_mode_txt(){
     }
 }
 
+
+// ThreeJs Planet
+function planet(){
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    document.getElementById("threejs_planet").appendChild(renderer.domElement);
+    // control = new THREE.OrbitControls(camera, renderer.domElement);
+
+    //SIZE ---------
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    window.addEventListener("resize", function(){
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width/height;
+        camera.updateProjectionMatrix();
+    })
+    renderer.setClearColor( 0x000000, 0);
+
+    //CAMERA--------
+    camera.position.set(0, 0, 3);
+    camera.lookAt(0, 0, 0); 
+    
+    // Light
+    const DirecLight = new THREE.DirectionalLight( 0xffffff, 2);
+    DirecLight.position.set(0, 2, 0.05);
+    DirecLight.target.position.set(0, 0, 0);
+    scene.add(DirecLight);
+    const light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+    scene.add( light );
+
+    // Particle
+    var particle = new THREE.Object3D();
+    var geometry = new THREE.TetrahedronGeometry(1, 3);
+    var material = new THREE.MeshPhongMaterial({
+        color: 0x5c5c5c
+    });
+    var xyz = Math.random() - 0.5;
+    for (var i = 0; i < 3500; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+        mesh.position.multiplyScalar(500 + (Math.random() * 1000));
+        particle.add(mesh);
+    }    
+    scene.add(particle);
+
+    // EARTH
+    var earth = new THREE.Object3D;
+    var earth_loader = new THREE.OBJLoader();
+    earth_loader.load(
+        "./obj/earth.obj",
+        function(object){
+            earth = object;
+            earth.scale.set(1, 1, 1);
+            earth.position.set(0, 0, 0);
+            scene.add(earth);
+        }
+    );
+
+    // MILLER --------------
+    var miller_Geom= new THREE.SphereBufferGeometry(1, 9 ,14, 0, 6.3, 1, 6.3);
+    var miller_Mat = new THREE.MeshPhongMaterial({
+        color: 0xa4dcdc,
+        //와이어프레임으로 보이게 하였다.
+        wireframe: true
+    });
+    var miller = new THREE.Mesh(miller_Geom, miller_Mat);
+    scene.add(miller);
+    miller.scale.set(1, 1, 1);
+    miller.position.set(0, 0, 0);
+    
+    //MANN------------------
+    var mann_Geom= new THREE.TorusKnotBufferGeometry(0.5, 1, 67, 20, 9, 20);
+    var mann_Mat = new THREE.MeshPhongMaterial({
+        color: 0x505050,
+        wireframe: true
+    });
+    var mann = new THREE.Mesh(mann_Geom, mann_Mat);
+    scene.add(mann);
+    mann.scale.set(0.7, 0.7, 0.7);
+    mann.position.set(0, 0, 0);
+
+    //COOPER------------
+    var cooper_loader = new THREE.OBJLoader();
+    cooper_loader.load(
+        "./obj/cooper.obj",
+        function(object){
+            cooper = object;
+            cooper.scale.set(2, 2, 2);
+            cooper.position.set(0, 0, 0);
+            scene.add(cooper);
+        }
+    );
+    
+   
+
+    //RENDER-------------------------------------------------------------------------------
+    var renderScene = new function renderScene() {
+        requestAnimationFrame(renderScene);
+
+        // planet
+        earth.rotation.y += 0.0004;
+        miller.rotation.y += 0.0004;
+        mann.rotation.y += 0.0004;
+        cooper.rotation.y += 0.0004;
+
+        // particle
+        particle.rotation.y += 0.000006;
+
+        renderer.render(scene,camera);
+    }    
+}
+
+
+
 // Init
 function init(){
     // window.onload = function(){
@@ -113,6 +229,7 @@ function init(){
     scroll_count();
     move_astronaut();
     scroll_img();
-    change_mode_txt()
+    change_mode_txt();
+    planet();
 }
 init();

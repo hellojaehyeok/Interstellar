@@ -89,12 +89,12 @@ section.steel_cut > div > div.cut_right_up_img{width: 20vw; height: 9vw; top: 23
 section.steel_cut > div > div.cut_right_down_img{width: 10vw; height: 7vw; top: 33.5vw; left: 70vw; background-image: url("../img/steelCut/right_2.jpg");}
 
 /* Change Txt */
-section.change_txt{width: 100%; height: 125vh; background: #000;text-align: center;}
-section.change_txt > p{color: #fff; font-size: 40px; position: sticky; top: 50vh; display: inline-block;padding-left: 70px;}
-section.change_txt > p > span{position: absolute; left: 0; color: #fff; transition: 500ms; transform: rotateX(0deg); transform-origin: 50% 0; transform-style: preserve-3d;}
+section.change_txt{width: 100%; height: 150vh; background: #000;text-align: center;}
+section.change_txt > p{color: #fff; font-size: 40px; position: sticky; top: 50vh; display: inline-block;padding-left: 70px; margin-bottom: 300px;}
+section.change_txt > p > span{position: absolute; left: 0; color: #fff; transition: 600ms; transform: rotateX(0deg); transform-origin: 50% 0; transform-style: preserve-3d;}
 section.change_txt > p > span.active_3D_txt{transform: rotateX(90deg)}
-section.change_txt > p > span::after{
-    color: #3ff; content: attr(data-text); position: absolute; transform-origin: 50% 0; top: 100%; left: 0;width: 100%; height: 100%;
-    transform: rotateX(-90deg);
-}
+section.change_txt > p > span::after{color: #3ff; content: attr(data-text); position: absolute; transform-origin: 50% 0; top: 100%; left: 0;width: 100%; height: 100%;transform: rotateX(-90deg);}
 
+
+section.visual_area{}
+section.visual_area > div{background: radial-gradient( #283439 0%, #000000 99%);}
