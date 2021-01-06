@@ -26,7 +26,8 @@ section.count > div{width: 1200px; height: 100%; margin: 0 auto;}
 section.count > div > ul{width: 100%; height: 100%; display: flex; align-items: center; justify-content: space-between;}
 section.count > div > ul > li{text-align: center; width: 300px;}
 section.count > div > ul > li > h2{font-size: 70px; margin-bottom: 35px;}
-section.count > div > ul > li > p{font-size: 20px;}
+section.count > div > ul > li > p{font-size: 20px; opacity: 0; transition: 800ms;}
+section.count > div > ul > li > p.active_count_txt{opacity: 1;}
 
 
 /* Story */
@@ -96,5 +97,5 @@ section.change_txt > p > span.active_3D_txt{transform: rotateX(90deg)}
 section.change_txt > p > span::after{color: #3ff; content: attr(data-text); position: absolute; transform-origin: 50% 0; top: 100%; left: 0;width: 100%; height: 100%;transform: rotateX(-90deg);}
 
 
-section.visual_area{}
-section.visual_area > div{background: radial-gradient( #283439 0%, #000000 99%);}
+section.visual_area{height: 400vh;}
+section.visual_area > div{background: radial-gradient( #283439 0%, #000000 99%); position: sticky; top: 0;}
