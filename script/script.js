@@ -130,11 +130,11 @@ function planet(){
     camera.position.set(0, 0, 3);
     
     // Light
-    const DirecLight = new THREE.DirectionalLight( 0xffffff, 2);
+    const DirecLight = new THREE.DirectionalLight( 0x8ec8ff, 1);
     DirecLight.position.set(0, 2, 0.05);
     DirecLight.target.position.set(0, 0, 0);
     scene.add(DirecLight);
-    const light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+    const light = new THREE.HemisphereLight( 0x8ec8ff, 0x76E8D5, 0.7 );
     scene.add( light );
 
     // Particle
@@ -143,7 +143,6 @@ function planet(){
     var material = new THREE.MeshPhongMaterial({
         color: 0x5c5c5c
     });
-    var xyz = Math.random() - 0.5;
     for (var i = 0; i < 3500; i++) {
         var mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
@@ -182,7 +181,7 @@ function planet(){
     //MANN
     var mann_Geom= new THREE.TorusKnotBufferGeometry(0.5, 1, 67, 20, 9, 20);
     var mann_Mat = new THREE.MeshPhongMaterial({
-        color: 0x505050,
+        color: 0xffffff,
         wireframe: true
     });
     var mann = new THREE.Mesh(mann_Geom, mann_Mat);
@@ -248,7 +247,7 @@ function planet(){
         function(object){
             main = object;
             main.scale.set(3, 3, 3);
-            main.position.set(0, -21.7, 0);
+            main.position.set(-0.25, -22.4, 0);
             main.rotation.set(0, 29.5, 0);
             scene.add(main);
         }
@@ -262,10 +261,11 @@ function planet(){
     const dot_line = document.querySelector("div.dot_line");
     const planet_dot_Els = document.querySelectorAll("li.planet_dot");
     const planet_scroll_val = document.querySelector("div.scroll_val");
-    console.log(planet_scroll_val);
+    let arrow = "up";
 
     window.addEventListener("scroll", change_planet);
     function init_dot(){
+        dot_line.classList.add("active_line");
         for(let i = 0 ; i <  planet_dot_Els.length; i++){
             planet_dot_Els[i].classList.remove("active_dot");
             planet_dot_Els[i].addEventListener("click", (e)=>{
@@ -276,12 +276,14 @@ function planet(){
 
     function change_planet(){
         let cur_scroll = document.documentElement.scrollTop;
-        console.log()
-        if(cur_scroll - visual_area_top > 0){
+        if(cur_scroll - visual_area_top > 0 && planet_scroll_val.clientWidth < window.innerWidth * 0.6){
             planet_scroll_val.style.width = 100 * ((cur_scroll - visual_area_top) / (visual_area.clientHeight - window.innerHeight) ) + "%"
         }
+        if(planet_scroll_val.clientWidth > window.innerWidth * 0.6){
+            planet_scroll_val.style.width = 99 + "%";
+        }
 
-        if(cur_scroll >= visual_area_top + (visual_area_slice * 5)){
+       if(cur_scroll >= visual_area_top + (visual_area_slice * 5)){
             cameraPos = "interstellar";
             init_dot();
             planet_dot_Els[5].classList.add("active_dot");
@@ -302,7 +304,6 @@ function planet(){
             init_dot();
             planet_dot_Els[1].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top){
-            dot_line.classList.add("active_line");
             cameraPos = "earth";
             init_dot();
             planet_dot_Els[0].classList.add("active_dot");
@@ -321,7 +322,6 @@ function planet(){
         mann.rotation.y += 0.0004;
         cooper.rotation.y += 0.0007;
 
-        // console.log(camera.position.y);
         if(cameraPos == "earth"){
             if(camera.position.y < 0){
                 camera.position.y +=change_speed; 
@@ -355,14 +355,25 @@ function planet(){
                 camera.position.y -=change_speed; 
             }
         }else if(cameraPos == "interstellar"){
-            if(camera.position.y > -20){
+            if(camera.position.y > -21){
                 camera.position.y -=change_speed; 
             }
         }
 
+        if(main.position.y < -22.3 && arrow =="up"){
+            main.position.y += 0.0009;
+        }
+        if(main.position.y > -22.5 && arrow =="down"){
+            main.position.y -= 0.0009;
+        }
+        if(main.position.y > -22.3){
+            arrow = "down"
+        }else if(main.position.y <-22.5){
+            arrow = "up"
+        }
 
         // particle
-        particle.rotation.y += 0.000006;
+        particle.rotation.y += 0.0002;
         renderer.render(scene,camera);
     }    
 }
