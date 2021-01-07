@@ -249,30 +249,65 @@ function planet(){
             main = object;
             main.scale.set(3, 3, 3);
             main.position.set(0, -21.7, 0);
-            main.rotation.set(0, 30, 0);
+            main.rotation.set(0, 29.5, 0);
             scene.add(main);
         }
     );
    
     const visual_area = document.querySelector("section.visual_area");
     const visual_area_top = visual_area.offsetTop;
-    let visual_area_slice = (visual_area.clientHeight - window.innerHeight) / 6;
+    let visual_area_slice = (visual_area.clientHeight - window.innerHeight) / 5;
     let cameraPos = "earth";
+    let change_speed = 0.06;
+    const dot_line = document.querySelector("div.dot_line");
+    const planet_dot_Els = document.querySelectorAll("li.planet_dot");
+    const planet_scroll_val = document.querySelector("div.scroll_val");
+    console.log(planet_scroll_val);
+
     window.addEventListener("scroll", change_planet);
+    function init_dot(){
+        for(let i = 0 ; i <  planet_dot_Els.length; i++){
+            planet_dot_Els[i].classList.remove("active_dot");
+            planet_dot_Els[i].addEventListener("click", (e)=>{
+                e.preventDefault();
+            })
+        }
+    }
+
     function change_planet(){
         let cur_scroll = document.documentElement.scrollTop;
-        if(cur_scroll > visual_area_top + (visual_area_slice * 5)){
+        console.log()
+        if(cur_scroll - visual_area_top > 0){
+            planet_scroll_val.style.width = 100 * ((cur_scroll - visual_area_top) / (visual_area.clientHeight - window.innerHeight) ) + "%"
+        }
+
+        if(cur_scroll >= visual_area_top + (visual_area_slice * 5)){
             cameraPos = "interstellar";
+            init_dot();
+            planet_dot_Els[5].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top + (visual_area_slice * 4)){
             cameraPos = "cooper";
+            init_dot();
+            planet_dot_Els[4].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top + (visual_area_slice * 3) ){
             cameraPos = "fifth";
+            init_dot();
+            planet_dot_Els[3].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top + (visual_area_slice * 2)){
             cameraPos = "mann";
+            init_dot();
+            planet_dot_Els[2].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top + (visual_area_slice * 1)){
             cameraPos = "miller";
+            init_dot();
+            planet_dot_Els[1].classList.add("active_dot");
         }else if(cur_scroll > visual_area_top){
+            dot_line.classList.add("active_line");
             cameraPos = "earth";
+            init_dot();
+            planet_dot_Els[0].classList.add("active_dot");
+        }else{
+            dot_line.classList.remove("active_line");
         }
     }
 
@@ -284,44 +319,44 @@ function planet(){
         earth.rotation.y += 0.0004;
         miller.rotation.y += 0.0004;
         mann.rotation.y += 0.0004;
-        cooper.rotation.y += 0.0004;
+        cooper.rotation.y += 0.0007;
 
         // console.log(camera.position.y);
         if(cameraPos == "earth"){
             if(camera.position.y < 0){
-                camera.position.y += 0.03; 
+                camera.position.y +=change_speed; 
             }
         }else if(cameraPos == "miller"){
             if(camera.position.y < -4){
-                camera.position.y += 0.03;
+                camera.position.y +=change_speed;
             }
             if(camera.position.y > -4){
-                camera.position.y -= 0.03;
+                camera.position.y -=change_speed;
             }
         }else if(cameraPos == "mann"){
             if(camera.position.y < -8){
-                camera.position.y += 0.03; 
+                camera.position.y +=change_speed; 
             }
             if(camera.position.y > -8){
-                camera.position.y -= 0.03; 
+                camera.position.y -=change_speed; 
             }
         }else if(cameraPos == "fifth"){
             if(camera.position.y < -12){
-                camera.position.y += 0.03; 
+                camera.position.y +=change_speed; 
             }
             if(camera.position.y > -12){
-                camera.position.y -= 0.03; 
+                camera.position.y -=change_speed; 
             }
         }else if(cameraPos == "cooper"){
             if(camera.position.y < -16){
-                camera.position.y += 0.03; 
+                camera.position.y +=change_speed; 
             }
             if(camera.position.y > -16){
-                camera.position.y -= 0.03; 
+                camera.position.y -=change_speed; 
             }
         }else if(cameraPos == "interstellar"){
             if(camera.position.y > -20){
-                camera.position.y -= 0.03; 
+                camera.position.y -=change_speed; 
             }
         }
 

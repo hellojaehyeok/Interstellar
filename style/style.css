@@ -26,7 +26,7 @@ section.count > div{width: 1200px; height: 100%; margin: 0 auto;}
 section.count > div > ul{width: 100%; height: 100%; display: flex; align-items: center; justify-content: space-between;}
 section.count > div > ul > li{text-align: center; width: 300px;}
 section.count > div > ul > li > h2{font-size: 70px; margin-bottom: 35px;}
-section.count > div > ul > li > p{font-size: 20px; opacity: 0; transition: 800ms;}
+section.count > div > ul > li > p{font-size: 20px; opacity: 0; transition: 2000ms;}
 section.count > div > ul > li > p.active_count_txt{opacity: 1;}
 
 
@@ -34,7 +34,8 @@ section.count > div > ul > li > p.active_count_txt{opacity: 1;}
 section.story{height: 650px; background-image: url('../img/bg/bg_2.png');}
 section.story > div{width: 1200px; margin: 0 auto; position: relative; text-align: right;}
 section.story > div > img{width: 390px; height: 530px; position: absolute; left: 0; top: 0;}
-section.story > div > div{color: #fff; margin: 250px 0 190px; display: inline-block; text-align: left;}
+section.story > div > div{color: #fff; margin: 150px 0 190px; display: inline-block; text-align: left;}
+section.story > div > div > h2{font-size: 40px; margin-bottom: 30px;}
 section.story > div > div > p{font-size: 20px; line-height: 30px;}
 section.story > div > div > a{color: #fff; font-size: 16px; text-decoration: none; display: inline-block;  width: 180px; height: 60px; border: 1px solid #3ff; border-radius: 20px; text-align: center; line-height: 60px; margin-top: 30px; transition: 500ms; overflow: hidden; position: relative; z-index: 1;}
 section.story > div > div > a::after{position: absolute; width: 0%; height: 100%; background: #3ff; content: ""; left: -35%; top: 0; transition: 400ms; transform: skew(50deg); z-index: -1;}
@@ -98,4 +99,16 @@ section.change_txt > p > span::after{color: #3ff; content: attr(data-text); posi
 
 
 section.visual_area{height: 400vh;}
-section.visual_area > div{background: radial-gradient( #283439 0%, #000000 99%); position: sticky; top: 0;}
+section.visual_area > div#threejs_planet{background: radial-gradient( #283439 0%, #000000 99%); position: sticky; top: 0;}
+section.visual_area > div.dot_line{position: fixed; width: 60%; height: 1px; background: #676767; top: 90%; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; transition: 500ms;}
+section.visual_area > div.active_line{opacity: 1;}
+section.visual_area > div.dot_line > div{width: 0%; height: 1px; background: #3ff; position: absolute;}
+section.visual_area > div.dot_line > ul{display: flex; width: 100%; height: 1px; justify-content: space-between;}
+section.visual_area > div.dot_line > ul > li{position: relative; display: flex; align-items: center; justify-content: center;}
+section.visual_area > div.dot_line > ul > li > a{width: 10px; height: 10px; display: inline-block; border-radius: 50%; background: #676767; transition: 500ms; position: absolute; cursor: default;}
+section.visual_area > div.dot_line > ul > li > p{font-size: 20px; color: #fff; pointer-events: none;  position: absolute; top: -50px; opacity: 0; transition: 500ms; width: 300px; text-align: center;}
+section.visual_area > div.dot_line > ul > li > img{width: 200px; height: 200px; pointer-events: none; position: absolute; top: -270px; opacity: 0; transition: 500ms;}
+section.visual_area > div.dot_line > ul > li:hover > a{transform: scale(2); background: #3ff;}
+section.visual_area > div.dot_line > ul > li:hover > p{opacity: 1;}
+section.visual_area > div.dot_line > ul > li:hover > img{opacity: 1;}
+section.visual_area > div.dot_line > ul > li.active_dot > a{transform: scale(2); background: #3ff;}
