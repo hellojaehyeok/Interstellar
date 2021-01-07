@@ -7,7 +7,6 @@ body{font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; background: #0
 section{background-repeat: no-repeat; background-position: center; background-size: cover;}
 
 
-
 /* Header */
 header{width: 100%; height: 50px; margin-top: 25px; position: fixed; display: flex; align-items: center; justify-content: space-between; z-index: 999;}
 header > a{margin-left: 100px; position: relative; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;}
@@ -53,9 +52,9 @@ section.count > div > ul > li > p.active_count_txt{opacity: 1;}
 
 /* Story */
 section.story{height: 650px; background-image: url('../img/bg/bg_2.png');}
-section.story > div{width: 1200px; margin: 0 auto; position: relative; text-align: right;}
-section.story > div > img{width: 390px; height: 530px; position: absolute; left: 0; top: 0;}
-section.story > div > div{color: #fff; margin: 150px 0 190px; display: inline-block; text-align: left;}
+section.story > div{width: 1200px; margin: 0 auto; position: relative; display: flex; align-items: center; justify-content: space-between;}
+section.story > div > img{width: 40%; height: auto; position: relative;}
+section.story > div > div{color: #fff; display: inline-block; text-align: left;}
 section.story > div > div > h2{font-size: 40px; margin-bottom: 30px;}
 section.story > div > div > p{font-size: 20px; line-height: 30px;}
 section.story > div > div > a{color: #fff; font-size: 16px; text-decoration: none; display: inline-block;  width: 180px; height: 60px; border: 1px solid #3ff; border-radius: 20px; text-align: center; line-height: 60px; margin-top: 30px; transition: 500ms; overflow: hidden; position: relative; z-index: 1;}
@@ -74,7 +73,7 @@ section.about > div > div > h2{font-size: 40px; margin: 20px 0 30px;}
 section.about > div > div > p{font-size: 20px; line-height: 30px;}
 section.about > div > img{box-shadow: 5px 5px 50px #030923;}
 section.about > div > img.introduce_front_img{width: 600px; position: absolute; bottom: 150px; right: 30%;}
-section.about > div > img.introduce_back_img{width: 600px; }
+section.about > div > img.introduce_back_img{width: 600px;}
 
 
 /* Story Line */
@@ -103,13 +102,27 @@ section.steel_cut{width: 100vw; height: 300vh;overflow: hidden; background: #000
 section.steel_cut > div{width: 100vw; height: 100vh;position: absolute; top: 0; left: 0;}
 section.steel_cut > div > div{display: inline-block; transform: translate(-50%, -50%); transform-origin: 50% 50%; background-size: cover; background-repeat: no-repeat; position: absolute; background-position: center;}
 section.steel_cut > div > div.cut_main_img{width: 25vw; height: 18vw; top: 28vw; left: 50vw; background-image: url("../img/steelCut/main_cut.jpeg");}
-section.steel_cut > div > div.cut_top_img{width: 20vw; height: 10vw; top: 12vw; left: 52.5vw; background-image: url("../img/steelCut/top.jpg");  transform: translate3d(-50%, -50%, -150px); transform-style: preserve-3d}
+section.steel_cut > div > div.cut_top_img{width: 20vw; height: 10vw; top: 12vw; left: 52.5vw; background-image: url("../img/steelCut/top.jpg");}
 section.steel_cut > div > div.cut_left_up_img{width: 10vw; height: 5vw; top: 21.5vw; left: 30vw; background-image: url("../img/steelCut/left.jpg");}
 section.steel_cut > div > div.cut_left_down_img{width: 20vw; height: 10vw; top: 32vw; left: 25vw; background-image: url("../img/steelCut/left_2.jpg");}
 section.steel_cut > div > div.cut_bottom_left_img{width: 15vw; height: 10vw; top: 44vw; left: 45vw; background-image: url("../img/steelCut/bottom.jpg");}
 section.steel_cut > div > div.cut_bottom_right_img{width: 8vw; height: 8vw; top: 43vw; left: 58.5vw; background-image: url("../img/steelCut/bottom_2.jpg");}
 section.steel_cut > div > div.cut_right_up_img{width: 20vw; height: 9vw; top: 23.5vw; left: 75vw; background-image: url("../img/steelCut/right.jpg");}
 section.steel_cut > div > div.cut_right_down_img{width: 10vw; height: 7vw; top: 33.5vw; left: 70vw; background-image: url("../img/steelCut/right_2.jpg");}
+
+/* section.steel_cut{width: 100vw; height: 300vh;overflow: hidden; background: #fff; position: relative;}
+section.steel_cut > div{width: 100vw; height: 100vh;position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center;}
+section.steel_cut > div > div{width: 80%; height: 80%; border: 10px solid salmon; position: relative;}
+section.steel_cut > div > div > img{display: inline-block; transform: translate(-50%, -50%); position: absolute;}
+section.steel_cut > div > div > img.cut_main_img{width: 25%; top: 50%; left: 50%;}
+section.steel_cut > div > div > img.cut_top_img{width: 20%; top: 20%; left: 52.5%;}
+section.steel_cut > div > div > img.cut_left_up_img{width: 10%; top: 40%; left: 30%;}
+section.steel_cut > div > div > img.cut_left_down_img{width: 20%; top: 57%; left: 25%;}
+section.steel_cut > div > div > img.cut_bottom_left_img{width: 15%; top: 80%; left: 45%;}
+section.steel_cut > div > div > img.cut_bottom_right_img{width: 8%; top: 78%; left: 58.5%;}
+section.steel_cut > div > div > img.cut_right_up_img{width: 20%; top: 58.5%; left: 75%;}
+section.steel_cut > div > div > img.cut_right_down_img{width: 10%; top: 33.5%; left: 70%;} */
+
 
 /* Change Txt */
 section.change_txt{width: 100%; height: 150vh; background: #000;text-align: center;}
@@ -141,3 +154,27 @@ footer > p{color: #fff; margin: 50px 0 50px; text-align: center; font-size: 16px
 footer > p > strong{font-size: 18px; font-weight: 300;}
 footer > a{color: #fff; transition: 500ms;}
 footer > a:hover{color: #3ff;}
+
+
+/* Media Query */
+@media all and (max-width:1250px){
+    /* Count */
+    section.count > div{width: 80%;}
+    section.count > div > ul > li > h2{font-size: 40px;}
+    section.count > div > ul > li > p{font-size: 16px;}
+
+    /* Story */
+    section.story > div{width: 80%;}
+    section.story > div > div > h2{font-size: 30px; margin-bottom: 30px;}
+    section.story > div > div > p{font-size: 16px; line-height: 30px;}
+    section.story > div > div > a{font-size: 16px; width: 90px; height: 30px;line-height: 30px;}
+
+    /* About */
+    section.about > div{width: 80%;}
+    section.about > div > div > span{font-size: 17px;}
+    section.about > div > div > h2{font-size: 30px;}
+    section.about > div > div > p{font-size: 16px;}
+    section.about > div > img.introduce_front_img{opacity: 0;}
+    section.about > div > img.introduce_back_img{width: 40%; height: auto;}
+}
+
