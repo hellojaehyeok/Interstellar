@@ -56,6 +56,7 @@ CSS
 ### Main
 페이지 로드 시 보이는 부분입니다.    
 배경에 이미지를 넣고 중앙에는 텍스트를 넣었습니다.   
+
 <img src="./img/readme/main.jpg" width="100%">
 
 
@@ -82,18 +83,21 @@ JavaScript
             clearInterval(timer);
         }
     }, speed)
+
 <img src="./img/readme/count.jpg" width="100%">
 
 
 ### Story   
 우주비행사 이미지를 배치 후 마우스의 위치값에 따라    
-left와 top 값을 변경시켜 동적인 움직임을 만들었습니다.    
+left와 top 값을 변경시켜 동적인 움직임을 만들었습니다.   
+
 <img src="./img/readme/story.jpg" width="100%">
 
 
 ### About
 배경이 이미지에서 컬러로 넘어가는 부분을 자연스럽게 이어주기 위하여   
 이미지를 중간에 배치 후 그림자를 추가하였습니다.
+
 <img src="./img/readme/about.jpg" width="100%">
 
 
@@ -101,6 +105,7 @@ left와 top 값을 변경시켜 동적인 움직임을 만들었습니다.
 리스트에 마우스 호버 시 이미지들이 뜨도록 하였습니다.    
 이미지의 위치값과 너비를 %로 만들어 화면이 줄어들더라도    
 어색해 보이지 않도록 만들었습니다.    
+
 <img src="./img/readme/story_line.jpg" width="100%">
 
 
@@ -147,15 +152,71 @@ JavaScript
     }
 
 transform: scale(5);   
+
 <img src="./img/readme/steel_cut.jpg" width="100%">
 
 transform: scale(1);   
+
 <img src="./img/readme/steel_cut_2.jpg" width="100%">
 
 ### Change Txt
+일정 스크롤이 넘어가면 텍스트가 바뀌도록 만들었습니다.
+CSS transform: rotateX(-90deg);를 활용하여 그래픽이 3D로 넘어가는 분위기를 연출 하였습니다.
 
+<img src="./img/readme/change_txt.jpg" width="100%">
 
 ### 3D Visual
+Three.js를 활용하여 3D 그래픽을 구현하였습니다.    
+총 6개의 행성을 만들었으며 Three.js에서 기본적으로 제공하는 도형을 변형하거나,    
+Maya에서 모델링 한 obj 파일을 가져와 로드하였습니다.     
+3D 영역의 높이를 5로 나눈 후 각 영역마다 카메라 y 값을 달리하였습니다.    
+
+JavaScript
+
+    var earth = new THREE.Object3D;
+    var earth_loader = new THREE.OBJLoader();
+    earth_loader.load(
+        "./obj/earth.obj",
+        function(object){
+            earth = object;
+            earth.scale.set(1, 1, 1);
+            earth.position.set(0, 0, 0);
+            scene.add(earth);
+        }
+    );
+
+
+현재 어떤 행성에 와있는지 스크롤은 얼마큼 되어있는지를 표시하기 위하여 하단에 2D 그래픽을 추가하였습니다.    
+3D 부분 내에서의 스크롤양을 구한 후 3D 부분의 높이와 나누었습니다.      
+그 값에 100을 추가로 곱하여 첫 스크롤 0%에서 스크롤을 다 내리면 100%가 되도록 만들었습니다.     
+window.innerWidth * 0.6은 CSS에서 바의 길이를 60%로 설정하였는데 그 이상으로 넘어가는 것을 방지하기 위하여 조건문을 추가하였습니다.
+
+JavaScript
+
+    if(cur_scroll - visual_area_top > 0 && planet_scroll_val.clientWidth < window.innerWidth * 0.6){
+        planet_scroll_val.style.width = 100 * ((cur_scroll - visual_area_top) / (visual_area.clientHeight - window.innerHeight) ) + "%"
+    }
+    if(planet_scroll_val.clientWidth > window.innerWidth * 0.6){
+        planet_scroll_val.style.width = 100 + "%";
+    }
+
+Earth - Miller - Mann - Fifth Dimentsion - Cooper Station - Interstellar
+
+<div>
+    <img src="./img/readme/3D/earth.jpg" width="40%">
+    <img src="./img/readme/3D/miller.jpg" width="40%">
+    <img src="./img/readme/3D/mann.jpg" width="40%">
+    <img src="./img/readme/3D/fifth.jpg" width="40%">
+    <img src="./img/readme/3D/cooper.jpg" width="40%">
+    <img src="./img/readme/3D/interstellar.jpg" width="40%">
+</div>
 
 
 ### Footer
+footer에는 웹사이트의 제목, 제작자 깃허브 주소를 적어놨습니다.   
+
+<img src="./img/readme/footer.png" width="100%">
+
+
+송재혁입니다.    
+감사합니다!
