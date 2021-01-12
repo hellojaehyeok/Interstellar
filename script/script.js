@@ -73,7 +73,6 @@ function scroll_img(){
         let cur_scroll = document.documentElement.scrollTop;
         let gap_scroll = cur_scroll - steel_cut_start
         if(cur_scroll < steel_cut_start){
-            // cut_img_wrap.style.top = 0  + "px";
             cut_img_wrap.style.position = "absolute";
             cut_img_wrap.style.transform = "scale(5)";
 
@@ -86,9 +85,9 @@ function scroll_img(){
             cut_img_wrap.style.top = steel_cut_gap  + "px";
             cut_img_wrap.style.position = "absolute";
             cut_img_wrap.style.transform = "scale(1)";
-            
         }
     }   
+    
 }
 
 // Change Mode Txt
@@ -280,7 +279,7 @@ function planet(){
             planet_scroll_val.style.width = 100 * ((cur_scroll - visual_area_top) / (visual_area.clientHeight - window.innerHeight) ) + "%"
         }
         if(planet_scroll_val.clientWidth > window.innerWidth * 0.6){
-            planet_scroll_val.style.width = 99 + "%";
+            planet_scroll_val.style.width = 100 + "%";
         }
 
        if(cur_scroll >= visual_area_top + (visual_area_slice * 5)){
